@@ -29,30 +29,15 @@ btnNext.style.opacity = "0";
 
 const createMarckup = function (response) {
   
-  response.data.hits.map((element) => {
+  response.data.results.map((element) => {
 
       markup += `<div class="photo-card">
-              <a class="gallery__item" href="${element.largeImageURL}">
-              <img class="gallery__image" src="${element.previewURL}"
+              <a class="gallery__item" href="https://www.themoviedb.org/t/p/original/${element.backdrop_path}">
+              <img class="gallery__image" src="https://www.themoviedb.org/t/p/original/${element.poster_path}"
               
-               alt="${element.tags}" loading="lazy" /></a>
+               alt="${element.original_title}" loading="lazy" /></a>
               <div class="info">
-                <p class="info-item">
-                  <b>Likes </b>
-                  <br>${element.likes}</br>
-                </p>
-                <p class="info-item">
-                  <b>Views </b>
-                  <br>${element.views}</br>
-                </p>
-                <p class="info-item">
-                  <b>Comments</b>
-                  <br>${element.comments}</br>
-                </p>
-                <p class="info-item">
-                  <b>Downloads</b>
-                  <br>${element.downloads}</br>
-                </p>
+               
               </div>
             </div>`;
   });
@@ -61,7 +46,7 @@ const createMarckup = function (response) {
 } 
 
 const fetchData = async () => {
-  const response = await axios.get(`https://pixabay.com/api/?key=12869198-d37a15061ea84e81a1308e6dd&page=${counter}&q=${formEl[0].value}&per_page=40&image_type=photo&pretty=true`);
+  const response = await axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=c491b5b8e2b4a9ab13619b0a91f8bb41`);
   return response;
 }
 
@@ -70,7 +55,7 @@ const  getPixplay = function()  {
    fetchData().then((response) => {
     console.log(response.data);
    
-    if (response.data.hits.length === 0) {
+    if (response.data.results.length === 0) {
       Notiflix.Notify.warning('Sorry, there are no images matching your search query. Please try again.');
 
     } else {
@@ -78,7 +63,7 @@ const  getPixplay = function()  {
       galleryEl.innerHTML = createMarckup(response);
       document.querySelector('.load-more').style.opacity = "1";
       totalHits += response.data.length;
-     let lightbox = new SimpleLightbox('.photo-card a', { captionsData: 'alt', captionDelay: 250 });
+     let lightbox = new SimpleLightbox('.photo-card a', { captionsData: 'alt', captionDelay: 250, widthRatio: 0.1 });
       lightbox.show();
       if (totalHits === response.data.totalHits) {
         Notiflix.Notify.warning("We're sorry, but you've reached the end of search results.");
@@ -112,24 +97,13 @@ formEl.addEventListener("submit", (event) => {
    
 });
 
-/*galleryEl.addEventListener("click", (event) => {
-    if (event.target.nodeName === "img") {
-
-    } else {
-        console.log("border!!!!");
-    }
-
-});*/
 
 window.addEventListener("scroll", () => {
    const { height: cardHeight } = document
         .querySelector(".gallery")
         .firstElementChild.getBoundingClientRect();
 
-      window.scrollBy({
-        top: cardHeight * 2,
-        behavior: "smooth",
-      }); 
+    
   
   const { scrollHeight, scrollTop, clientHeight } = document.documentElement;
   console.log(window.scrollY);
