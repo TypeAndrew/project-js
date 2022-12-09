@@ -1,0 +1,57 @@
+<header class="header">
+  <nav class="header__navigation">
+    <a class="header__logo" href="./index.html">
+      <img class="header__icon" src="./images/header/icon.svg" alt="Logo" />
+      <span class="header__title">Filmoteka</span>
+    </a>
+
+
+    <ul class="header__links">
+      <li>
+        <a
+          class="header__home-page navigation__link--current header__link"
+          href="./index.html"
+          >home</a
+        >
+      </li>
+
+      <li>
+        <a class="header__my-library header__link" href="./library.html"
+          >my library
+        </a>
+
+      </li>
+    </ul>
+  </nav>
+  <div class="container__form">
+    <form autocomplete="off" class="header__form">
+      <input
+        class="header__form-input"
+        type="text"
+        placeholder="Movie search"
+        name="searchmovies"
+      />
+      <button class="header__form-button" type="submit">
+        <img class="header_loop_icon" src="./images/header/loupe.svg" alt="Loupe" />
+      </button>
+    </form>
+  </div>
+  
+  <div class="header__flex">
+      <div class="js-warning header-warning"></div>
+
+      <div class="theme-button__container">
+        <button class="theme-button" type="button" id="theme-button" aria-label="Switch dark mode button">
+          <span class="theme-button__circle"></span>
+          <span class="theme-button__slider-scene">
+            <span class="theme-button__slider">
+              <span class="theme-button__moon-symb">&#9789;</span>
+              <span class="theme-button__sun-symb">&#9728;</span>
+            </span>
+          </span>
+        </button>
+      </div>
+  </div>
+
+
+</header>

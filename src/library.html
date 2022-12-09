@@ -1,36 +1,25 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Filmoteka</title>
+    <title>Library</title>
     <link rel="icon" href="./images/xml/icon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <link
-      rel="stylesheet"
-      href="https://uicdn.toast.com/tui.pagination/latest/tui-pagination.css" media="all"
-    />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./sass/index.scss" media="all"/>
+    <link rel="stylesheet" href="./sass/index.scss" />
   </head>
   <body>
     <include src="./partials/spinner.html"></include>
-    <include src="./partials/header.html"></include>
-
-    <main>
-      <include src="./partials/movies_section.html"></include>
-      <include src="./partials/pagination.html"></include>
-      <!-- ❗️❗️❗️ Add partials like so for every page -->
-    </main>
+    <include src="./partials/library-main.html"></include>
+    <include src="./partials/films-library.html"></include>
     <include src="./partials/footer.html"></include>
     <include src="./partials/modal.html"></include>
-
-    <script type="module" src="./index.js"></script>
+    <script type="module" src="./library.js"></script>
   </body>
 </html>
